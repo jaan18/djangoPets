@@ -1,0 +1,158 @@
+{% extends "animals/base.html" %} {% block content %} {%load static %}
+<!--Jumbotron-->
+
+<div id="adopcionesHeader" class="jumbotron jumbotron-fluid bg-secondary">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h1 class="display-4 text-center text-white">ADOPCIÓN</h1>
+        <!--  <p class="lead text-center text-white d-none d-sm-block">
+          Nuestros amigos disponibles en el refugio.
+        </p> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--CARDS-->
+<!--swiper animals-->
+<div class="container text-center mt-5">
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Nuestros huespedes</h3>
+      <p class="text-center text-muted">
+        Actualmente hay {{no_of_animals}} huespedes disponibles para la
+        adopcion!, {{no_of_cats}} gatos y {{no_of_dogs}} perros
+      </p>
+      <!--Swipper-->
+      <div class="card-group">
+        <!-- Slider main container -->
+        <div class="swiper-container">
+          <!-- Additional required wrapper -->
+          <div class="swiper-wrapper">
+            {% for animal in animals %}
+            <!-- Slides -->
+            <div class="swiper-slide">
+              <a href="/animal/{{animal.id}}/">
+                <div class="card">
+                  <img
+                    src="{{animal.image.url}}"
+                    class="card-img-top"
+                    alt="..."
+                    style="height: 25rem"
+                  />
+                  <div class="card-body bg-primary">
+                    <h5 class="card-title text-light text-center">
+                      {{ animal.name }}
+                    </h5>
+                    <p class="card-text text-center">
+                      <small class="text-light"
+                        >Fecha de ingreso {{ animal.sheltered}}</small
+                      >
+                    </p>
+                    <a href="#" class="btn btn-secondary">Go somewhere</a>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            {% endfor %}
+          </div>
+          <!-- If we need pagination -->
+          <div class="swiper-pagination"></div>
+
+          <!-- If we need navigation buttons -->
+          <div class="swiper-button-prev text-info"></div>
+          <div class="swiper-button-next text-info"></div>
+        </div>
+      </div>
+      <!--End swipper-->
+    </div>
+  </div>
+  <!--Tables-->
+  <div class="row">
+    <div class="col-md-6">
+      <h4 class="text-center text-sucess mt-3 mb-3">
+        <i class="fas fa-cat"></i> Gatos
+      </h4>
+      <table class="table table-striped text-center">
+        <thead class="table-primary">
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Genero</th>
+            <th scope="col">Ciudad</th>
+            <th scope="col">Edad</th>
+            <th scope="col">Info</th>
+          </tr>
+        </thead>
+        <tbody class="bg-secondary">
+          {% for cat in cats %}
+          <tr class="text-light">
+            <td>{{ cat.name }}</td>
+            <td>{{ cat.gender }}</td>
+            <td>{{ cat.city }}</td>
+            <td>{{ cat.age }}</td>
+            <td>
+              <a
+                href="/animal/{{cat.id}}/"
+                class="btn btn-lg btn-outline-primary"
+                >Ficha <i class="fa fa-arrow-right"></i
+              ></a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% if cats.has_other_pages %}
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item">
+            <a class="page-link" href="#">Previous</a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+      </nav>
+      {% endif %}
+    </div>
+
+    <div class="col-md-6">
+      <h4 class="text-center text-sucess mt-3 mb-3">
+        <i class="fas fa-dog"></i> Perros
+      </h4>
+      <table class="table table-striped text-center">
+        <thead class="table-primary">
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Genero</th>
+            <th scope="col">Ciudad</th>
+            <th scope="col">Edad</th>
+            <th scope="col">Info</th>
+          </tr>
+        </thead>
+        <tbody class="bg-secondary">
+          {% for dog in dogs %}
+          <tr class="text-light">
+            <td>{{ dog.name }}</td>
+            <td>{{ dog.gender }}</td>
+            <td>{{ dog.city }}</td>
+            <td>{{ dog.age }}</td>
+            <td>
+              <a
+                href="/animal/{{dog.id}}/"
+                class="btn btn-lg btn-outline-primary"
+                >Ficha <i class="fa fa-arrow-right"></i
+              ></a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- End tables-->
+  </div>
+</div>
+{% endblock content %}

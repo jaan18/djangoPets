@@ -1,0 +1,72 @@
+{% extends "animals/base.html" %} {% block content %} {%load static %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="text-primary display-4 text-center">Buscar</h1>
+      <p class="text-muted text-center mb-2">
+        Busca por nombre, genero o tipo de mascota
+      </p>
+      <form class="mr-5 ml-5">
+        <div class="input-group mb-3">
+          <input
+            type="search"
+            class="form-control"
+            placeholder="¡Encuentra tu nuevo mejor amigo!"
+            name="q"
+          />
+          <div class="input-group-prepend">
+            <button type="submit" class="btn btn-primary">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!--Swipper-->
+  {% if search_query %}
+  <div class="row">
+    <div class="col-md-12">
+      <div class="swiper-container">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+          {% for animal in animals %}
+          <!-- Slides -->
+          <div class="swiper-slide">
+            <a href="../animal/{{animal.id}}/">
+              <div class="card">
+                <img
+                  src="{{animal.image.url}}"
+                  class="card-img-top"
+                  alt="..."
+                  style="height: 25rem"
+                />
+                <div class="card-body bg-primary">
+                  <h5 class="card-title text-light text-center">
+                    {{ animal.name }}
+                  </h5>
+                  <p class="card-text text-center">
+                    <small class="text-light"
+                      >Fecha de ingreso {{ animal.sheltered}}</small
+                    >
+                  </p>
+                  <a href="#" class="btn btn-secondary">Go somewhere</a>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          {% endfor %}
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev text-info"></div>
+        <div class="swiper-button-next text-info"></div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+</div>
+{% endblock content %}

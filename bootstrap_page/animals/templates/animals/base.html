@@ -1,0 +1,213 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+      integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Raleway:100,300,500,700"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Questrial"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <title>Animal Shelter</title>
+
+    
+    <!-- Swiper CSS-->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+
+    
+  </head>
+  <body>
+    <!--Single navbar-->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <a href="{% url 'home' %}" class="navbar-brand">
+        <img src="{% static '/images/logo/logo (3).png' %}" alt="logo">
+      </a>
+      <!--Button of the navbar begins here-->
+      <button
+        class="navbar-toggler"
+        data-toggle="collapse"
+        data-target="#mainNavbar"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <!--navigation of the navbar-->
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a href="{% url 'home' %}" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'acercaNosotros' %}" class="nav-link">Acerca De Nosotros</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'adopciones' %}" class="nav-link">Adopción</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'contacto' %}" class="nav-link">Contacto</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'buscar' %}" class="nav-link">Buscar</a>
+          </li>
+          <li class="nav-item">
+            <a
+              href=""
+              class="nav-link"
+              data-toggle="modal"
+              data-target="#bookingModal"
+              >Agendar Una Cita</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+   
+    {% block content %} {% endblock content %}
+    <!--Footer area-->
+    <section id="footer" class="p-3 bg-dark">
+      <ul
+        class="nav text-center justify-content-center flex-column flex-sm-row"
+      >
+        <li class="nav-item">
+          <a href="{% url 'home' %}" class="nav-link text-white">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'acercaNosotros' %}" class="nav-link text-white">Acerca De Nosotros</a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'adopciones' %}" class="nav-link text-white">Adopción</a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'contacto' %}" class="nav-link text-white">Contacto</a>
+        </li>
+        <li class="nav-item">
+          <a
+            href=""
+            class="nav-link text-white"
+            data-toggle="modal"
+            data-target="#bookingModal"
+            >Agendar una cita</a
+          >
+        </li>
+      </ul>
+      <div class="row">
+        <div class="col-md-12 copy">
+          <p class="text-center text-white"><i class="fas fa-copyright"></i> - Adopta un amigo.</p>
+        </div>
+      </div>
+    </section>
+
+    
+
+
+    <!-- Booking Modal -->
+    <div class="modal" id="bookingModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Agendar una cita</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>llena los siguientes campos para poder agendarte una cita</p>
+            <form>
+              <div class="form-group">
+                <label for="email"></label>
+                <input type="email" class="form-control" id="email" placeholder="tucorreo@dominio.com">
+              </div>
+              <div class="form-group">
+                <label for="name"></label>
+                <input type="name" class="form-control" id="name" placeholder="Nombre completo">
+              </div>
+              <div class="form-group">
+                <label for="tel"></label>
+                <input type="tel" class="form-control" id="tel" placeholder="Telefono">
+              </div>
+              <div class="form-group">
+                <label for="requests">Comentarios</label>
+                <textarea name="" id="requests"  rows="3" class="form-control"></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-primary">Enviar</button>
+            <button class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+   
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js'"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script src="{% static 'bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    <!--Swiper js-->
+      <!-- Swiper JS-->
+      <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+      <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+      <!-- Initialize Swiper -->
+<script>
+  var swiper = new Swiper(".swiper-container", {
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    breakpoints: {
+      640: {
+        slidesPerView: 1,
+        spaceBetween: 50,
+      },
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 40,
+      },
+      1024: {
+        slidesPerView:3,
+        spaceBetween: 20,
+      },
+      autoplay: {
+        delay: 3500,
+        disableOnInteraction: false,
+      },
+    },
+  });
+</script>
+
+  </body>
+</html>
+

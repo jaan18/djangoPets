@@ -1,0 +1,35 @@
+{% extends "animals/base.html" %} {% block content %} {%load static %}
+
+<!--Jumbotron-->
+<div id="adopcionesHeader" class="jumbotron jumbotron-fluid bg-secondary">
+  <div class="container">
+    <h1 class="display-4 text-center text-white">ACERCA DE NOSOTROS</h1>
+    <p class="lead text-white text-center d-none d-sm-block">
+      Organizacion sin fines de lucro.
+    </p>
+  </div>
+</div>
+
+<!--body-->
+<div class="container text-center mb-4">
+  <div class="row">
+    <div class="col d-none d-md-block">
+      <img
+        id="imagenAcercaNosotros"
+        class="img-fluid rounded"
+        src="{% static '/images/cards/pexels-audrius-vizbaras-5281966.jpg' %}"
+        alt="imagen"
+      />
+    </div>
+    <div class="col mt-5">
+      <h1>Un poco de nuestra historia</h1>
+      <p>
+        Somos un refugio animal fundado en 1998, bajo el apoyo gubernamental y
+        de donadores, nos mantenemos a flote criando y dando sonrisas por cada
+        compañero en nuestro cuidado.
+      </p>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

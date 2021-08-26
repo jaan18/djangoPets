@@ -1,0 +1,84 @@
+{% extends "animals/base.html" %} {% block content %} {%load static %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 mt-3 mb-3">
+      <img
+        src="{{ animal.image.url }}"
+        alt=""
+        class="mx-auto d-block"
+        style="height: 40rem; width: 35rem"
+        alt="{{animal.image.url}}"
+      />
+    </div>
+    <div class="col-md-5 mt-5 ml-2">
+      <h5 class="mt-5 display-4 text-primary">
+        {{animal.name}} {% if animal.gender == 'Macho' %}
+        <i class="fas fa-mars"></i>
+        {% elif animal.gender == 'Hembra' %}
+        <i class="fas fa-venus"></i>
+        {% endif %}
+      </h5>
+      <p>{{ animal.description }}</p>
+      <p>
+        <span class="text-sucess">Dificultad</span>
+        {% if animal.difficulty >= 1 %}
+        <i class="fas fa-paw" style="color: green"></i>
+        {% else %}
+        <i class="fas fa-paw"></i>
+        {% endif %} {% if animal.difficulty >= 2 %}
+        <i class="fas fa-paw" style="color: green"></i>
+        {% else %}
+        <i class="fas fa-paw"></i>
+        {% endif %} {% if animal.difficulty >= 3 %}
+        <i class="fas fa-paw" style="color: green"></i>
+        {% else %}
+        <i class="fas fa-paw"></i>
+        {% endif %} {% if animal.difficulty >= 4 %}
+        <i class="fas fa-paw" style="color: green"></i>
+        {% else %}
+        <i class="fas fa-paw"></i>
+        {% endif %} {% if animal.difficulty >= 5 %}
+        <i class="fas fa-paw" style="color: green"></i>
+        {% else %}
+        <i class="fas fa-paw"></i>
+        {% endif %}
+      </p>
+      <p><span class="text-primary">Edad:</span>{{animal.age}}</p>
+      <p>
+        <span class="text-primary">Fecha de ingreso:</span>{{animal.sheltered}}
+      </p>
+      <!--Swiper-->
+      <div class="card-group">
+        <!-- Slider main container -->
+        <div class="swiper-container">
+          <!-- Additional required wrapper -->
+          <div class="swiper-wrapper">
+            {% for animal in animals %}
+            <!-- Slides -->
+            <div class="swiper-slide">
+              <a href="../{{animal.id}}">
+                <div class="card">
+                  <img
+                    src="{{animal.image.url}}"
+                    class="card-img-top"
+                    alt="{{animal.image.url}}"
+                    style="height: 10rem"
+                  />
+                </div>
+              </a>
+            </div>
+
+            {% endfor %}
+          </div>
+
+          <!-- If we need navigation buttons -->
+          <div class="swiper-button-prev text-info"></div>
+          <div class="swiper-button-next text-info"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
